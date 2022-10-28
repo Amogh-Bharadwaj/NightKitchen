@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "571772076597",
+    "project_id": "nightkitchen-52a17",
+    "storage_bucket": "nightkitchen-52a17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571772076597:android:50e9449c4fa2d26cf4a77c",
+        "android_client_info": {
+          "package_name": "com.example.night_kitchen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571772076597-afrvfa6uobb0514oc2h814pp1m2r8rom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7lgRw29iTQ3Bawc1JJaggLRSDQzZGtWc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571772076597-afrvfa6uobb0514oc2h814pp1m2r8rom.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "571772076597-o4pit7s36qilcn9h6aurgengtiahu501.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nightKitchen"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
