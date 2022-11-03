@@ -12,9 +12,7 @@ class Kitchen extends StatelessWidget {
               fontSize: 35,
               color: Colors.blueAccent,
             )),
-        backgroundColor: Colors.blue,
       ),
-      backgroundColor: Colors.white,
     );
   }
 }
