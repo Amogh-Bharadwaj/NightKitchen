@@ -118,7 +118,7 @@ class LoginScreenState extends State<LoginScreen> {
                                           builder: (context) =>
                                               const Kitchen()));
                                     } on FirebaseAuthException catch (err) {
-                                      ErrorAlert(context, authError(err.code));
+                                      errorAlert(context, authError(err.code));
                                     }
                                     toggleSpin(false);
                                   },

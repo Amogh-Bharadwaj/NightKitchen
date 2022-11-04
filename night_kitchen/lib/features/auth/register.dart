@@ -20,24 +20,6 @@ class RegisterScreenState extends State<RegisterScreen> {
 
   bool loading = false;
   String gender = "Male";
-  Future<String> handleRegister(String email, String password) async {
-    String go = "An error occurred!";
-    try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      go = "success";
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        go = "Password is too weak!";
-      } else if (e.code == 'email-already-in-use') {
-        go = "Email address already in use!";
-      }
-    } catch (e) {}
-
-    return go;
-  }
 
   String authError(err) {
     if (err == "weak-password") {
@@ -180,7 +162,7 @@ class RegisterScreenState extends State<RegisterScreen> {
                                         passwordController.text.trim();
                                     try {
                                       String name = nameController.text.trim();
-                                      
+
                                       if (name.length < 2 || name.length > 60) {
                                         throw const FormatException(
                                             "name-unreal");
@@ -215,12 +197,12 @@ class RegisterScreenState extends State<RegisterScreen> {
                                           builder: (context) =>
                                               const Kitchen()));
                                     } on FirebaseAuthException catch (err) {
-                                      ErrorAlert(context, authError(err.code));
+                                      errorAlert(context, authError(err.code));
                                     } on FormatException catch (err) {
-                                      ErrorAlert(
+                                      errorAlert(
                                           context, infoError(err.message));
                                     } on FirebaseException catch (err) {
-                                      ErrorAlert(context, err.code);
+                                      errorAlert(context, err.code);
                                     }
                                     toggleSpin(false);
                                   },
