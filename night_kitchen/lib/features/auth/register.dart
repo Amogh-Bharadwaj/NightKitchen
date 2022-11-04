@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:night_kitchen/common/error_alert.dart';
 import 'package:night_kitchen/common/spinner.dart';
 import 'package:night_kitchen/common/auth_field.dart';
-import "package:night_kitchen/features/recipes/kitchen.dart";
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -188,14 +187,14 @@ class RegisterScreenState extends State<RegisterScreen> {
                                       );
                                       await FirebaseFirestore.instance
                                           .collection("users")
-                                          .add({
+                                          .doc(email)
+                                          .set({
                                         'Name': name,
                                         'Age': age,
                                         'Gender': userGender,
+                                        'Email': email
                                       });
-                                      nav.pushReplacement(MaterialPageRoute(
-                                          builder: (context) =>
-                                              const Kitchen()));
+                                      nav.pushNamedAndRemoveUntil("/kitchen", (route) => false);
                                     } on FirebaseAuthException catch (err) {
                                       errorAlert(context, authError(err.code));
                                     } on FormatException catch (err) {

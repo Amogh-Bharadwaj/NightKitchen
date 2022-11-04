@@ -51,11 +51,7 @@ class GateScreen extends StatelessWidget {
                                 backgroundColor: MaterialStateProperty.all(
                                     const Color.fromARGB(255, 64, 101, 155))),
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const RegisterScreen()));
+                              Navigator.pushNamed(context, "/register");
                             },
                             child: const Text("Register")))),
                 Padding(
@@ -75,11 +71,7 @@ class GateScreen extends StatelessWidget {
                                 backgroundColor: MaterialStateProperty.all(
                                     const Color.fromARGB(255, 34, 149, 126))),
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const LoginScreen()));
+                              Navigator.pushNamed(context, "/login");
                             },
                             child: const Text("Log in"))))
               ],

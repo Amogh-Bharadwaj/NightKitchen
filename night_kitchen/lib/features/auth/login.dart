@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:night_kitchen/common/auth_field.dart';
 import 'package:night_kitchen/common/spinner.dart';
 import 'package:night_kitchen/common/error_alert.dart';
-import "package:night_kitchen/features/recipes/kitchen.dart";
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -114,9 +113,8 @@ class LoginScreenState extends State<LoginScreen> {
                                         email: email,
                                         password: password,
                                       );
-                                      nav.pushReplacement(MaterialPageRoute(
-                                          builder: (context) =>
-                                              const Kitchen()));
+                                      nav.pushNamedAndRemoveUntil(
+                                          "/kitchen", (route) => false);
                                     } on FirebaseAuthException catch (err) {
                                       errorAlert(context, authError(err.code));
                                     }
