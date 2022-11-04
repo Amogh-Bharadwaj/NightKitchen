@@ -11,11 +11,14 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  //User? user = FirebaseAuth.instance.currentUser;
+
+  User? user = FirebaseAuth.instance.currentUser;
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 
   runApp(MaterialApp(
@@ -23,5 +26,5 @@ void main() async {
         fontFamily: 'Kanit',
         scaffoldBackgroundColor: const Color.fromARGB(255, 28, 37, 53),
       ),
-      home: const GateScreen()));
+      home: user == null ? const GateScreen() : const Kitchen()));
 }

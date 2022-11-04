@@ -180,7 +180,7 @@ class RegisterScreenState extends State<RegisterScreen> {
                                         passwordController.text.trim();
                                     try {
                                       String name = nameController.text.trim();
-                                      print("Name: $name");
+                                      
                                       if (name.length < 2 || name.length > 60) {
                                         throw const FormatException(
                                             "name-unreal");
@@ -192,13 +192,13 @@ class RegisterScreenState extends State<RegisterScreen> {
                                         throw const FormatException(
                                             "age-unreal");
                                       }
-                                      print("Age: $age");
-                                      String user_gender = gender.trim();
-                                      if (user_gender.length < 3) {
+
+                                      String userGender = gender.trim();
+                                      if (userGender.length < 3) {
                                         throw const FormatException(
                                             "gender-empty");
                                       }
-                                      print("Gender: $user_gender");
+
                                       await FirebaseAuth.instance
                                           .createUserWithEmailAndPassword(
                                         email: email,
@@ -209,7 +209,7 @@ class RegisterScreenState extends State<RegisterScreen> {
                                           .add({
                                         'Name': name,
                                         'Age': age,
-                                        'Gender': user_gender,
+                                        'Gender': userGender,
                                       });
                                       nav.pushReplacement(MaterialPageRoute(
                                           builder: (context) =>
