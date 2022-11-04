@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:night_kitchen/features/auth/login.dart';
-import 'package:night_kitchen/features/auth/register.dart';
 
 class GateScreen extends StatelessWidget {
   const GateScreen({super.key});
