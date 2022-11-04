@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import "../recipes/kitchen.dart";
-import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../common/auth_field.dart';
-import '../../common/spinner.dart';
-import '../../common/error_alert.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:night_kitchen/common/auth_field.dart';
+import 'package:night_kitchen/common/spinner.dart';
+import 'package:night_kitchen/common/error_alert.dart';
+import "package:night_kitchen/features/recipes/kitchen.dart";
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -24,6 +24,8 @@ class LoginScreenState extends State<LoginScreen> {
       return "You have entered the wrong password.";
     } else if (err == "user-disabled") {
       return "This user has been disabled";
+    } else if (err == "invalid-email") {
+      return "Enter a valid email address.";
     }
     return "An error occurred. Please fill all credentials.";
   }
@@ -97,10 +99,9 @@ class LoginScreenState extends State<LoginScreen> {
                                           const TextStyle(
                                               fontSize: 17,
                                               fontFamily: 'Kanit')),
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              const Color.fromARGB(
-                                                  255, 44, 146, 54))),
+                                      backgroundColor: MaterialStateProperty.all(
+                                          const Color.fromARGB(
+                                              255, 44, 146, 54))),
                                   onPressed: () async {
                                     toggleSpin(true);
                                     final nav = Navigator.of(context);
@@ -121,8 +122,9 @@ class LoginScreenState extends State<LoginScreen> {
                                     }
                                     toggleSpin(false);
                                   },
-                                  child: const Text("Enter")))),
-                      spinner(loading)
+                                  child: loading
+                                      ? spinner(loading)
+                                      : const Text("Enter")))),
                     ],
                   )),
             ])));

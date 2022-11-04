@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:night_kitchen/common/error_alert.dart';
 import 'package:night_kitchen/common/spinner.dart';
-import '../../common/auth_field.dart';
-import "../recipes/kitchen.dart";
+import 'package:night_kitchen/common/auth_field.dart';
+import "package:night_kitchen/features/recipes/kitchen.dart";
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -169,10 +169,9 @@ class RegisterScreenState extends State<RegisterScreen> {
                                           const TextStyle(
                                               fontSize: 17,
                                               fontFamily: 'Kanit')),
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              const Color.fromARGB(
-                                                  255, 44, 146, 54))),
+                                      backgroundColor: MaterialStateProperty.all(
+                                          const Color.fromARGB(
+                                              255, 44, 146, 54))),
                                   onPressed: () async {
                                     toggleSpin(true);
                                     final nav = Navigator.of(context);
@@ -225,8 +224,9 @@ class RegisterScreenState extends State<RegisterScreen> {
                                     }
                                     toggleSpin(false);
                                   },
-                                  child: const Text("Enter")))),
-                      spinner(loading)
+                                  child: loading
+                                      ? spinner(loading)
+                                      : const Text("Enter")))),
                     ],
                   )),
             ])));
